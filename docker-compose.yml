@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  nestjs-example-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nestjs-example-api
+    env_file:
+      - .env
+    ports:
+      - "3022:3000"
+    networks:
+      - nestjs-example-api_network
+    restart: unless-stopped
+
+networks:
+  nestjs-example-api_network:
+    driver: bridge
